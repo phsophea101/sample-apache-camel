@@ -1,5 +1,8 @@
 # Getting Started of Apache Camel
 ### EIP: ```Enterprise Integration Patterns```
+### To build: ```gradle clean build```
+### To run in docker file: ```docker run -e WATCHER_DIRECTORY=watcher -e SNAPSHOT_DIRECTORY=snapshot -p 8080:8080 camel_file-watcher```
+### To run in docker compose: ```docker-compse up -d```
 * ### Routing:
 A route in Apache Camel is a sequence of steps, executed in order by Camel, that consume and process a message. A Camel route starts with a consumer, and is followed by a chain of endpoints and processors.:
 ``` #properties
@@ -48,3 +51,4 @@ public class FileRoutingBuilder extends RouteBuilder {
 ``` 
 * [Microservice orchestration with Apache Camel](https://har-d.medium.com/microservice-orchestration-with-apache-camel-15ae9d108ba)
 * [microservices-with-apache-camel](https://dzone.com/articles/microservices-with-apache-camel)
+* [code-examples]https://github.com/thombergs/code-examples/tree/master)
