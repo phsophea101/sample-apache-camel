@@ -1,0 +1,12 @@
+version: '3'
+services:
+  file-watcher:
+    build: .
+    environment:
+      WATCHER_DIRECTORY: watchers
+      SNAPSHOT_DIRECTORY: snapshots
+    volumes:
+      - ./watchers:/watchers
+      - ./snapshots:/snapshots
+    ports:
+      - "8081:8080"

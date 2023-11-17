@@ -1,0 +1,45 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.6.7'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'com.sophea.spring'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+ext {
+	mapstructVersion = '1.4.2.Final'
+	camelVersion = '3.20.2'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation "org.apache.camel.springboot:camel-spring-boot-starter:$camelVersion"
+	implementation "org.apache.camel:camel-file-watch:$camelVersion"
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//Mapstruct
+	implementation "org.mapstruct:mapstruct:$mapstructVersion"
+	annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
+
+	compileOnly "org.projectlombok:lombok"
+	annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	annotationProcessor "org.projectlombok:lombok"
+}
+
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
